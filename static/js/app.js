@@ -30,89 +30,77 @@ if (pill && indicator) {
     });
   });
 
-  // Section observer for active nav state
   const sections = document.querySelectorAll('section[id]');
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) setActive(entry.target.id);
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s =>
+    new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-45% 0px -50% 0px' }).observe(s)
+  );
 
-  sections.forEach(s => sectionObserver.observe(s));
-
-  // Initialize indicator position on load
   window.addEventListener('load', () => {
     const first = pill.querySelector('a');
     if (first) {
       indicator.style.transition = 'none';
       moveIndicator(first);
-      requestAnimationFrame(() => {
-        indicator.style.transition = '';
-      });
+      requestAnimationFrame(() => { indicator.style.transition = ''; });
     }
   });
 }
 
 // ─────────────────────────────────
-// MOBILE MENU
+// MOBILE MENU — FIXED
 // ─────────────────────────────────
 const brg = document.getElementById('brg');
 const mob = document.getElementById('mob');
 const mobClose = document.getElementById('mob-close');
 let menuOpen = false;
 
-function openMenu() {
+function mo() {
   if (!mob || !brg) return;
   menuOpen = true;
   mob.classList.add('open');
   mob.setAttribute('aria-hidden', 'false');
   brg.setAttribute('aria-expanded', 'true');
   document.body.style.overflow = 'hidden';
-  const spans = brg.querySelectorAll('span');
-  if (spans[0]) spans[0].style.transform = 'translateY(3px) rotate(45deg)';
-  if (spans[1]) spans[1].style.transform = 'translateY(-3px) rotate(-45deg)';
+  const s = brg.querySelectorAll('span');
+  if (s[0]) s[0].style.transform = 'translateY(3px) rotate(45deg)';
+  if (s[1]) s[1].style.transform = 'translateY(-3px) rotate(-45deg)';
 }
 
-function closeMenu() {
+function mc() {
   if (!mob || !brg) return;
   menuOpen = false;
   mob.classList.remove('open');
   mob.setAttribute('aria-hidden', 'true');
   brg.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
-  const spans = brg.querySelectorAll('span');
-  spans.forEach(s => { s.style.transform = ''; });
+  brg.querySelectorAll('span').forEach(s => { s.style.transform = ''; });
 }
 
-if (brg) {
-  brg.addEventListener('click', () => {
-    menuOpen ? closeMenu() : openMenu();
-  });
-}
+// THIS IS THE KEY FIX — exposes mc() globally for onclick="mc()" in HTML
+window.mc = mc;
 
-if (mobClose) {
-  mobClose.addEventListener('click', closeMenu);
-}
+if (brg) brg.addEventListener('click', () => menuOpen ? mc() : mo());
+if (mobClose) mobClose.addEventListener('click', mc);
 
-// Close mobile menu links
+// Also close menu when any mobile link is clicked (backup for onclick)
 document.querySelectorAll('.mob-link').forEach(link => {
-  link.addEventListener('click', closeMenu);
+  link.addEventListener('click', mc);
 });
 
-// ESC key to close mobile menu
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && menuOpen) closeMenu();
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menuOpen) mc();
 });
 
 // ─────────────────────────────────
 // SCROLL REVEAL ANIMATIONS
 // ─────────────────────────────────
-const revealObserver = new IntersectionObserver(
+const obs = new IntersectionObserver(
   (entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in');
-        revealObserver.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   },
@@ -120,7 +108,9 @@ const revealObserver = new IntersectionObserver(
 );
 
 document.querySelectorAll('.R').forEach(el => {
-  revealObserver.observe(el);
+  // Add reveal-init class so CSS knows to animate this element
+  el.classList.add('reveal-init');
+  obs.observe(el);
 });
 
 // ─────────────────────────────────
@@ -128,24 +118,19 @@ document.querySelectorAll('.R').forEach(el => {
 // ─────────────────────────────────
 const copyBtn = document.getElementById('contactCopyBtn');
 const copyLabel = document.getElementById('contactCopyLabel');
-
 if (copyBtn && copyLabel) {
-  copyBtn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText('safal@safalshrestha.com.np');
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('dev.safalstha@gmail.com').then(() => {
       copyBtn.classList.add('copied');
       copyLabel.textContent = 'Copied!';
       setTimeout(() => {
         copyBtn.classList.remove('copied');
         copyLabel.textContent = 'Copy address';
       }, 2200);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+    }).catch(() => {
       copyLabel.textContent = 'Copy failed';
-      setTimeout(() => {
-        copyLabel.textContent = 'Copy address';
-      }, 2200);
-    }
+      setTimeout(() => { copyLabel.textContent = 'Copy address'; }, 2200);
+    });
   });
 }
 
@@ -159,10 +144,7 @@ function updateKTMTime() {
     const now = new Date();
     const ktm = new Intl.DateTimeFormat('en-GB', {
       timeZone: 'Asia/Kathmandu',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
     }).format(now);
     el.textContent = ktm + ' NPT (UTC+5:45)';
     el.setAttribute('datetime', now.toISOString());
@@ -170,7 +152,6 @@ function updateKTMTime() {
     el.textContent = '--:--:-- NPT (UTC+5:45)';
   }
 }
-
 updateKTMTime();
 setInterval(updateKTMTime, 1000);
 
@@ -179,7 +160,7 @@ setInterval(updateKTMTime, 1000);
 // ─────────────────────────────────
 let lbData = [];
 let lbCurrent = 0;
-let lb, lbImg, lbCap, lbSubEl, lbCtr, lbClose, lbPrev, lbNext;
+let lb, lbImg, lbCap, lbSubEl, lbCtr, lbCloseEl, lbPrev, lbNext;
 
 document.addEventListener('DOMContentLoaded', () => {
   initGallery();
@@ -195,7 +176,7 @@ async function initGallery() {
     const response = await fetch('static/json/photos.json');
     if (!response.ok) throw new Error('Failed to load photos');
     const data = await response.json();
-    
+
     // Build lightbox data array
     lbData = data.gallery.map(item => ({
       src: item.url,
@@ -203,20 +184,20 @@ async function initGallery() {
       sub: item.location || ''
     }));
 
-    // Create filter buttons
+    // Unique categories for filtering
     const categories = ['all', ...new Set(data.gallery.map(item => item.category))];
     injectFilters(grid, categories);
 
-    // Populate grid
     grid.innerHTML = '';
+
     data.gallery.forEach((item, i) => {
       const card = document.createElement('div');
       const layoutClass = i < 5 ? 'photo-grid-item' : 'photo-slider-item';
-      card.className = `photo-card pm R ${layoutClass}`;
+      card.className = `photo-card pm R reveal-init ${layoutClass}`;
       card.dataset.cat = item.category;
       card.dataset.lb = i;
-      card.style.transitionDelay = `${i * 0.05}s`;
-      
+      card.style.transitionDelay = `${i * 0.1}s`;
+
       card.innerHTML = `
         <div class="photo-inner">
           <img src="${item.url}" alt="${item.title}" loading="lazy">
@@ -226,19 +207,17 @@ async function initGallery() {
           </div>
         </div>
       `;
-      
+
       // Click handler for lightbox
       card.addEventListener('click', () => lbOpen(i));
       card.style.cursor = 'pointer';
-      
+
       grid.appendChild(card);
     });
 
     // Observe new elements for scroll reveal
-    document.querySelectorAll('.R').forEach(el => {
-      if (!el.classList.contains('in')) {
-        revealObserver.observe(el);
-      }
+    grid.querySelectorAll('.R.reveal-init').forEach(el => {
+      if (!el.classList.contains('in')) obs.observe(el);
     });
 
     setupFilterLogic();
@@ -256,26 +235,26 @@ function injectFilters(container, categories) {
   if (existing) existing.remove();
 
   const filterDiv = document.createElement('div');
-  filterDiv.className = 'photo-filters R';
+  filterDiv.className = 'photo-filters R reveal-init';
   filterDiv.innerHTML = categories.map(cat => `
     <button class="photo-filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${cat}">
       ${cat.charAt(0).toUpperCase() + cat.slice(1)}
     </button>
   `).join('');
   container.parentNode.insertBefore(filterDiv, container);
+
+  // Observe filter bar for reveal
+  obs.observe(filterDiv);
 }
 
 function setupFilterLogic() {
   document.querySelectorAll('.photo-filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      // Update active button
       document.querySelectorAll('.photo-filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
       const cat = btn.dataset.filter;
-      const tiles = document.querySelectorAll('.pm');
-      
-      tiles.forEach(tile => {
+
+      document.querySelectorAll('.pm').forEach(tile => {
         if (cat === 'all' || tile.dataset.cat === cat) {
           tile.style.display = '';
           requestAnimationFrame(() => {
@@ -288,9 +267,7 @@ function setupFilterLogic() {
           tile.style.transform = 'scale(0.95)';
           tile.style.pointerEvents = 'none';
           setTimeout(() => {
-            if (tile.style.opacity === '0') {
-              tile.style.display = 'none';
-            }
+            if (tile.style.opacity === '0') tile.style.display = 'none';
           }, 400);
         }
       });
@@ -301,7 +278,7 @@ function setupFilterLogic() {
 function setupMouseWheelScroll(container) {
   container.addEventListener('wheel', (e) => {
     const canScroll = container.scrollWidth > container.clientWidth;
-    if (canScroll) {
+    if (canScroll && e.deltaY !== 0) {
       e.preventDefault();
       container.scrollLeft += e.deltaY;
     }
@@ -338,30 +315,19 @@ function initLightboxEvents() {
   lbCap = document.getElementById('lb-caption');
   lbSubEl = document.getElementById('lb-sub');
   lbCtr = document.getElementById('lb-counter');
-  lbClose = lb.querySelector('.lb-close');
+  lbCloseEl = lb.querySelector('.lb-close');
   lbPrev = lb.querySelector('.lb-prev');
   lbNext = lb.querySelector('.lb-next');
 
-  // Close button
-  if (lbClose) {
-    lbClose.addEventListener('click', lbClose_);
-  }
+  if (lbCloseEl) lbCloseEl.addEventListener('click', lbClose_);
+  if (lbPrev) lbPrev.addEventListener('click', () => lbStep(-1));
+  if (lbNext) lbNext.addEventListener('click', () => lbStep(1));
 
-  // Navigation arrows
-  if (lbPrev) {
-    lbPrev.addEventListener('click', () => lbStep(-1));
-  }
-  if (lbNext) {
-    lbNext.addEventListener('click', () => lbStep(1));
-  }
-
-  // Click outside to close
-  lb.addEventListener('click', (e) => {
+  lb.addEventListener('click', e => {
     if (e.target === lb) lbClose_();
   });
 
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', e => {
     if (!lb || !lb.classList.contains('open')) return;
     if (e.key === 'Escape') lbClose_();
     if (e.key === 'ArrowLeft') lbStep(-1);
@@ -388,10 +354,9 @@ function lbClose_() {
 
 function lbShow() {
   if (!lbData.length || !lbImg || !lbCap || !lbSubEl || !lbCtr) return;
-  
+
   const d = lbData[lbCurrent];
   lbImg.classList.add('fading');
-  
   setTimeout(() => {
     lbImg.src = d.src;
     lbImg.alt = d.title;
