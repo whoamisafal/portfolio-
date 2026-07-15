@@ -26,6 +26,17 @@
 <meta property="og:url" content="https://shresthasafal.com.np/"/>
 <meta property="og:site_name" content="Safal Kumar Shrestha"/>
 <meta property="og:locale" content="en_US"/>
+    <!-- 1. CRITICAL FIX: Add datePosted (YYYY-MM-DD format) -->
+  <meta itemprop="datePosted" content="2022-02-01" />
+
+  <!-- 2. CRITICAL FIX: Remote Job Location Markup -->
+  <meta itemprop="jobLocationType" content="TELECOMMUTE" />
+  <span itemprop="applicantLocationRequirements" itemscope itemtype="https://schema.org/Country">
+    <meta itemprop="name" content="US" />
+  </span>
+
+  <!-- 3. WARNING FIX: Add Employment Type -->
+  <meta itemprop="employmentType" content="FULL_TIME" />
 <meta property="og:image" content="https://safalkumarshrestha.github.io/portfolio-/og-image.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -836,18 +847,6 @@
       </div>
 
       <div class="tl-item" itemprop="hasOfferCatalog" itemscope itemtype="https://schema.org/JobPosting">
-  
-  <!-- 1. CRITICAL FIX: Add datePosted (YYYY-MM-DD format) -->
-  <meta itemprop="datePosted" content="2022-02-01" />
-
-  <!-- 2. CRITICAL FIX: Remote Job Location Markup -->
-  <meta itemprop="jobLocationType" content="TELECOMMUTE" />
-  <span itemprop="applicantLocationRequirements" itemscope itemtype="https://schema.org/Country">
-    <meta itemprop="name" content="US" />
-  </span>
-
-  <!-- 3. WARNING FIX: Add Employment Type -->
-  <meta itemprop="employmentType" content="FULL_TIME" />
 
   <div class="tl-date"><time datetime="2022">2022</time></div>
   <div class="tl-dot" aria-hidden="true"></div>
