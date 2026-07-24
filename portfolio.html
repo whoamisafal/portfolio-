@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Safal Kumar Shrestha — AI/ML Engineer & MLOps Engineer</title>
+<meta name="description" content="Safal Kumar Shrestha is a B.Tech AI student at Kathmandu University and AI/ML Engineer. Creator of KU Krishi (Nepal ICT Award Semi-Finalist), Hydroponics AI (STEAM Grant, DFRobot hardware sponsored), TrekSathi and Like Tiffin — 3 apps live on Google Play under bala.ai."/>
+<meta name="author" content="Safal Kumar Shrestha"/>
+<meta property="og:title" content="Safal Kumar Shrestha — AI/ML Engineer & MLOps Engineer"/>
+<meta property="og:description" content="B.Tech AI at Kathmandu University. Builder of KU Krishi (Nepal ICT Award Semi-Finalist), Hydroponics AI (STEAM Grant funded, DFRobot hardware sponsored), AIHPC cluster, and self-hosted cloud infrastructure."/>
+<meta property="og:type" content="profile"/>
+<meta name="theme-color" content="#0a0a0a"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:#0a0a0a;
+  color:#f5f5f5;
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;background:none;border:none;font-family:inherit;color:inherit}
+ul{list-style:none}
+
+/* ===== CUSTOM PROPERTIES ===== */
+:root{
+  --bg:#0a0a0a;
+  --bg-card:#0f0f0f;
+  --fg:#f5f5f5;
+  --fg-muted:#999;
+  --border:#262626;
+  --border-subtle:rgba(255,255,255,0.08);
+  --primary:#6366f1;
+  --primary-dim:rgba(99,102,241,0.15);
+  --primary-dim2:rgba(99,102,241,0.08);
+  --font-display:'Cormorant',Georgia,serif;
+  --font-mono:'DM Mono','Courier New',monospace;
+  --radius:6px;
+  --max-w:72rem;
+  --transition:0.2s ease;
+}
+
+/* ===== TYPOGRAPHY HELPERS ===== */
+.font-display{font-family:var(--font-display)}
+.font-mono{font-family:var(--font-mono)}
+.text-muted{color:var(--fg-muted)}
+.text-primary{color:var(--primary)}
+.text-sm{font-size:0.875rem}
+.text-xs{font-size:0.75rem}
+
+/* ===== LAYOUT ===== */
+.W{max-width:var(--max-w);margin:0 auto;width:100%}
+.W-md{max-width:56rem;margin:0 auto;width:100%}
+.W-sm{max-width:48rem;margin:0 auto;width:100%}
+section{padding:6rem 1.5rem;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+@media(min-width:768px){section{padding:8rem 3rem}}
+
+/* ===== SECTION HEADER ===== */
+.sec-num{
+  font-family:var(--font-mono);
+  font-size:0.7rem;
+  color:var(--fg-muted);
+  letter-spacing:0.08em;
+  margin-right:1rem;
+}
+.sec-heading{
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  margin-bottom:4rem;
+}
+.sec-heading h2{
+  font-family:var(--font-display);
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:600;
+  line-height:1.1;
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.1s}
+.reveal-d2{transition-delay:0.2s}
+.reveal-d3{transition-delay:0.3s}
+.reveal-d4{transition-delay:0.4s}
+.reveal-d5{transition-delay:0.5s}
+
+/* ===== NAVIGATION ===== */
+#nav{
+  position:fixed;
+  top:2rem;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:100;
+  display:flex;
+  align-items:center;
+  gap:2px;
+  padding:0.5rem 0.75rem;
+  border-radius:9999px;
+  border:1px solid var(--border-subtle);
+  background:rgba(15,15,15,0.5);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:box-shadow 0.3s,background 0.3s;
+}
+#nav.scrolled{background:rgba(15,15,15,0.85);box-shadow:0 4px 24px rgba(0,0,0,0.5)}
+.nav-btn{
+  position:relative;
+  padding:0.5rem 1rem;
+  border-radius:9999px;
+  font-size:0.8rem;
+  font-weight:500;
+  color:var(--fg-muted);
+  transition:color var(--transition);
+  white-space:nowrap;
+}
+.nav-btn:hover{color:var(--fg)}
+.nav-btn.active{color:var(--primary)}
+.nav-btn.active::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:9999px;
+  background:var(--primary-dim2);
+}
+/* Mobile nav */
+#nav-mobile{
+  display:none;
+  position:fixed;
+  top:1.5rem;
+  left:1.5rem;
+  right:1.5rem;
+  z-index:100;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 1.5rem;
+  border-radius:20px;
+  border:1px solid var(--border-subtle);
+  background:rgba(15,15,15,0.5);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+#nav-mobile.scrolled{background:rgba(15,15,15,0.85)}
+.nav-mobile-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--fg-muted)}
+.burger{padding:4px;color:var(--fg)}
+#mobile-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:90;
+  background:rgba(10,10,10,0.97);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1.5rem;
+}
+#mobile-overlay.open{display:flex}
+.mob-nav-btn{
+  font-family:var(--font-display);
+  font-size:2rem;
+  font-weight:600;
+  color:var(--fg);
+  transition:color var(--transition);
+}
+.mob-nav-btn:hover,.mob-nav-btn.active{color:var(--primary)}
+@media(max-width:900px){
+  #nav{display:none}
+  #nav-mobile{display:flex}
+}
+@media(min-width:901px){
+  #nav-mobile,#mobile-overlay{display:none!important}
+}
+
+/* ===== HERO ===== */
+#hero{
+  position:relative;
+  min-height:100dvh;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8rem 1.5rem 4rem;
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 10%,rgba(99,102,241,0.08),transparent 70%);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  font-family:var(--font-mono);
+  font-size:0.7rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--fg-muted);
+  margin-bottom:1.5rem;
+}
+.hero-name{
+  font-family:var(--font-display);
+  font-size:clamp(3rem,9vw,7rem);
+  font-weight:600;
+  line-height:1.05;
+  margin-bottom:1.5rem;
+}
+.hero-name em{font-style:italic;font-weight:500}
+.hero-tagline{
+  font-size:clamp(0.95rem,2vw,1.1rem);
+  color:var(--fg-muted);
+  max-width:52rem;
+  margin:0 auto 3rem;
+  line-height:1.7;
+}
+.hero-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  max-width:48rem;
+  margin:0 auto 2.5rem;
+}
+.hero-stat{
+  border:1px solid var(--border);
+  background:rgba(15,15,15,0.5);
+  backdrop-filter:blur(8px);
+  padding:1.25rem 1.5rem;
+  border-radius:var(--radius);
+  font-size:0.85rem;
+  color:rgba(245,245,245,0.85);
+  text-align:left;
+  transition:border-color 0.3s;
+}
+.hero-stat:hover{border-color:rgba(99,102,241,0.3)}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:0.625rem;margin-bottom:3rem}
+.tag{
+  padding:0.375rem 0.875rem;
+  border:1px solid var(--border);
+  border-radius:9999px;
+  font-size:0.78rem;
+  color:var(--fg-muted);
+}
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  padding:0.75rem 1.75rem;
+  background:var(--primary);
+  color:#fff;
+  border-radius:9999px;
+  font-size:0.9rem;
+  font-weight:500;
+  transition:background 0.2s,transform 0.2s;
+}
+.hero-cta:hover{background:#5558e8;transform:translateY(-1px)}
+.hero-cta svg{transition:transform 0.2s}
+.hero-cta:hover svg{transform:translateY(3px)}
+.scroll-indicator{
+  position:absolute;
+  bottom:3rem;
+  left:50%;
+  transform:translateX(-50%);
+  width:1.5rem;
+  height:2.5rem;
+  border:2px solid var(--border);
+  border-radius:9999px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:0.35rem;
+  animation:scrollBounce 2s ease-in-out infinite;
+}
+.scroll-dot{
+  width:4px;
+  height:8px;
+  background:var(--primary);
+  border-radius:9999px;
+  animation:scrollFade 2s ease-in-out infinite;
+}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+@keyframes scrollFade{0%,100%{opacity:0}50%{opacity:1}}
+@media(max-width:600px){.hero-stats{grid-template-columns:1fr}}
+
+/* ===== BADGES ===== */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding:0.25rem 0.625rem;
+  border-radius:9999px;
+  font-size:0.7rem;
+  font-weight:500;
+  letter-spacing:0.02em;
+  border:1px solid var(--border);
+  color:var(--fg-muted);
+}
+.badge-accent{
+  background:var(--primary-dim);
+  border-color:rgba(99,102,241,0.25);
+  color:var(--primary);
+}
+.badge-outline{border-color:var(--border);color:var(--fg-muted)}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr;gap:3rem}
+@media(min-width:1024px){.about-grid{grid-template-columns:2fr 1fr;gap:4rem}}
+.about-text h3{
+  font-family:var(--font-display);
+  font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:500;
+  line-height:1.35;
+  margin-bottom:2rem;
+  color:rgba(245,245,245,0.95);
+}
+.about-text p{color:var(--fg-muted);line-height:1.8;margin-bottom:1.25rem;font-size:1rem}
+.photo-placeholder{
+  aspect-ratio:3/4;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:0.75rem;
+}
+.photo-initials{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:5rem;
+  color:rgba(99,102,241,0.2);
+}
+.photo-caption{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);text-align:center;margin-bottom:2rem}
+.fact{padding:0.875rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.fact:last-child{border-bottom:none}
+.fact-key{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.25rem}
+.fact-val{font-size:0.85rem;color:var(--fg)}
+
+/* ===== PROJECTS ===== */
+.proj-list{display:flex;flex-direction:column;gap:5rem}
+.proj-item{border-top:1px solid var(--border);padding-top:3rem}
+.proj-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.proj-num{font-family:var(--font-mono);font-size:0.8rem;color:var(--primary)}
+.proj-ext-link{
+  display:inline-flex;align-items:center;gap:0.25rem;
+  font-size:0.72rem;color:var(--fg-muted);
+  transition:color var(--transition);
+}
+.proj-ext-link:hover{color:var(--primary)}
+.proj-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem,3.5vw,2rem);
+  font-weight:600;
+  margin-bottom:1rem;
+}
+.proj-badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem}
+.proj-desc{font-size:1rem;color:var(--fg-muted);line-height:1.8;margin-bottom:1.5rem}
+.proj-stack{
+  background:rgba(15,15,15,0.6);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+  margin-bottom:1.5rem;
+}
+.proj-stack-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.5rem}
+.proj-stack-val{font-size:0.85rem;color:rgba(245,245,245,0.75);line-height:1.7}
+.proj-extras-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.75rem}
+.proj-extras li{
+  font-size:0.875rem;
+  color:var(--fg-muted);
+  padding:0.3rem 0 0.3rem 1rem;
+  position:relative;
+  line-height:1.6;
+}
+.proj-extras li::before{content:'·';position:absolute;left:0;color:var(--primary)}
+.proj-note{
+  border-left:2px solid rgba(99,102,241,0.3);
+  padding:0.5rem 1.5rem;
+  margin-top:1.25rem;
+  font-size:0.875rem;
+  color:var(--fg-muted);
+  font-style:italic;
+  line-height:1.7;
+}
+
+/* ===== SKILLS ===== */
+.skills-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
+@media(min-width:768px){.skills-grid{grid-template-columns:1fr 1fr}}
+.skill-cat h3{
+  font-family:var(--font-display);
+  font-size:1.2rem;
+  font-weight:600;
+  color:var(--primary);
+  margin-bottom:1rem;
+}
+.skill-item{
+  display:flex;align-items:flex-start;gap:0.5rem;
+  font-size:0.875rem;color:var(--fg-muted);
+  padding:0.2rem 0;
+}
+.skill-dot{color:var(--primary);flex-shrink:0;margin-top:2px}
+
+/* ===== EXPERIENCE TIMELINE ===== */
+.timeline{position:relative}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:var(--border);
+}
+@media(min-width:768px){.timeline::before{left:4rem}}
+.tl-item{
+  position:relative;
+  padding-left:2rem;
+  padding-bottom:4rem;
+}
+@media(min-width:768px){.tl-item{padding-left:8rem}}
+.tl-dot{
+  position:absolute;
+  left:-6px;
+  top:4px;
+  width:12px;height:12px;
+  background:var(--primary);
+  border-radius:50%;
+  box-shadow:0 0 0 4px var(--bg);
+}
+@media(min-width:768px){.tl-dot{left:calc(4rem - 6px)}}
+.tl-year{
+  font-family:var(--font-mono);
+  font-size:0.8rem;
+  color:var(--primary);
+  position:absolute;
+  left:0;
+  top:0;
+}
+@media(min-width:768px){.tl-year{left:0;top:2px}}
+.tl-role{
+  font-family:var(--font-display);
+  font-size:clamp(1.1rem,2.5vw,1.4rem);
+  font-weight:600;
+  margin-bottom:0.4rem;
+}
+.tl-org{font-size:0.85rem;color:var(--fg-muted);margin-bottom:0.75rem}
+.tl-desc{font-size:0.95rem;color:var(--fg-muted);line-height:1.75}
+.tl-stack{
+  background:rgba(15,15,15,0.6);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--radius);
+  padding:0.875rem 1.25rem;
+  margin-top:1rem;
+}
+.tl-stack-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.35rem}
+.tl-stack-val{font-size:0.8rem;color:rgba(245,245,245,0.75);line-height:1.6}
+.tl-dur{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-top:0.75rem}
+.tl-badge{margin-top:0.75rem}
+
+/* ===== EDUCATION ===== */
+.edu-card{
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(15,15,15,0.4);
+  border-radius:10px;
+  padding:2rem;
+  margin-bottom:2rem;
+}
+.edu-inst{
+  font-family:var(--font-display);
+  font-size:clamp(1.3rem,3vw,1.8rem);
+  font-weight:600;
+  margin-bottom:0.5rem;
+}
+.edu-degree{font-size:1rem;color:var(--primary);margin-bottom:0.5rem}
+.edu-dept{font-size:0.85rem;color:var(--fg-muted);margin-bottom:1rem}
+.edu-badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
+.edu-desc{font-size:0.95rem;color:var(--fg-muted);line-height:1.75;margin-bottom:1.25rem}
+.edu-mods-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.625rem}
+.edu-mods{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
+.edu-mod{
+  font-size:0.8rem;color:rgba(245,245,245,0.7);
+  padding:0.25rem 0.75rem;
+  background:rgba(255,255,255,0.05);
+  border-radius:4px;
+}
+.edu-awards-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.5rem}
+.edu-award{display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:rgba(245,245,245,0.8);padding:0.2rem 0}
+.edu-extras{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:600px){.edu-extras{grid-template-columns:1fr}}
+.edu-extra{
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(15,15,15,0.3);
+  border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+}
+.edu-extra-lbl{font-family:var(--font-mono);font-size:0.65rem;color:var(--primary);margin-bottom:0.375rem}
+.edu-extra-val{font-size:0.85rem;color:rgba(245,245,245,0.8)}
+
+/* ===== TREKKING ===== */
+.trek-intro{font-size:1rem;color:var(--fg-muted);line-height:1.8;max-width:44rem;margin-bottom:3.5rem}
+.trek-item{
+  border-left:2px solid rgba(99,102,241,0.3);
+  padding:1rem 0 1rem 2rem;
+  margin-bottom:2.5rem;
+}
+.trek-head{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:0.75rem}
+.trek-name{font-family:var(--font-display);font-size:1.5rem;font-weight:600;margin-bottom:0.5rem}
+.trek-meta{display:flex;flex-wrap:wrap;gap:0.5rem;font-size:0.8rem;color:var(--fg-muted);margin-bottom:1rem}
+.trek-meta-sep{opacity:0.4}
+.trek-meta .mono{font-family:var(--font-mono)}
+.trek-desc{font-size:0.95rem;color:var(--fg-muted);line-height:1.75;margin-bottom:1rem}
+.trek-hl-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.5rem}
+.trek-hl li{
+  font-size:0.875rem;color:var(--fg-muted);
+  padding:0.25rem 0 0.25rem 1rem;
+  position:relative;
+}
+.trek-hl li::before{content:'·';position:absolute;left:0;color:var(--primary)}
+.mountain-icon{color:var(--primary);flex-shrink:0;margin-top:4px}
+
+/* ===== FAQ ===== */
+.faq-item{
+  border:1px solid rgba(255,255,255,0.07);
+  background:rgba(15,15,15,0.3);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin-bottom:0.75rem;
+}
+.faq-q{
+  width:100%;
+  padding:1.25rem 1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  text-align:left;
+  font-family:var(--font-display);
+  font-size:1rem;
+  font-weight:500;
+  color:var(--fg);
+  transition:background var(--transition);
+}
+.faq-q:hover{background:rgba(255,255,255,0.03)}
+.faq-chevron{transition:transform 0.3s ease;color:var(--fg-muted);flex-shrink:0}
+.faq-q.open .faq-chevron{transform:rotate(180deg)}
+.faq-a{
+  display:none;
+  padding:0 1.5rem 1.25rem;
+  font-size:0.95rem;
+  color:var(--fg-muted);
+  line-height:1.8;
+}
+.faq-a.open{display:block}
+
+/* ===== CONTACT ===== */
+.avail-dot{
+  width:10px;height:10px;
+  background:#22c55e;
+  border-radius:50%;
+  flex-shrink:0;
+  position:relative;
+}
+.avail-dot::after{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  border-radius:50%;
+  background:#22c55e;
+  opacity:0.4;
+  animation:ping 1.5s ease-in-out infinite;
+}
+@keyframes ping{0%,100%{transform:scale(1);opacity:0.4}50%{transform:scale(1.8);opacity:0}}
+.avail-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem}
+.contact-note{font-size:1rem;color:var(--fg-muted);line-height:1.8;margin-bottom:2.5rem}
+.contact-card{
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(15,15,15,0.4);
+  border-radius:10px;
+  padding:2rem;
+}
+.contact-section-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.625rem;display:flex;align-items:center;gap:0.5rem}
+.email-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.375rem}
+.email-link{font-size:1.05rem;color:var(--fg);transition:color var(--transition)}
+.email-link:hover{color:var(--primary)}
+.copy-btn{
+  padding:0.4rem;
+  border-radius:6px;
+  color:var(--fg-muted);
+  transition:background var(--transition),color var(--transition);
+}
+.copy-btn:hover{background:rgba(255,255,255,0.06);color:var(--fg)}
+.copy-confirm{font-size:0.75rem;color:#22c55e;margin-top:0.375rem;display:none}
+.contact-divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:1.5rem 0}
+.clink{
+  display:flex;align-items:center;gap:0.75rem;
+  font-size:0.875rem;color:var(--fg-muted);
+  padding:0.5rem 0;
+  transition:color var(--transition);
+}
+.clink:hover{color:var(--primary)}
+.clink-icon{color:var(--primary);display:flex;flex-shrink:0}
+.clink-desc{flex:1}
+.clink-sub{color:var(--fg);font-size:0.8rem}
+.clink-arr{margin-left:auto;opacity:0.5}
+.clink:hover .clink-arr{opacity:1}
+.loc-time-row{
+  display:flex;flex-wrap:wrap;gap:1.5rem;
+  font-size:0.875rem;color:var(--fg-muted);
+  margin-top:1.5rem;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(255,255,255,0.07);
+}
+.loc-row,.time-row{display:flex;align-items:center;gap:0.5rem}
+.time-dot{width:8px;height:8px;background:var(--primary);border-radius:50%;flex-shrink:0}
+
+/* ===== FOOTER ===== */
+footer{
+  border-top:1px solid var(--border);
+  padding:3rem 1.5rem;
+}
+.footer-inner{
+  max-width:var(--max-w);
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  font-size:0.8rem;
+  color:var(--fg-muted);
+}
+.footer-left{display:flex;align-items:center;gap:0.5rem}
+
+/* ===== SVG ICONS (inline) ===== */
+svg{display:inline-block;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<!-- ===== DESKTOP NAV ===== -->
+<nav id="nav" role="navigation" aria-label="Primary navigation">
+  <button class="nav-btn active" data-section="hero">Intro</button>
+  <button class="nav-btn" data-section="about">About</button>
+  <button class="nav-btn" data-section="projects">Projects</button>
+  <button class="nav-btn" data-section="skills">Skills</button>
+  <button class="nav-btn" data-section="experience">Experience</button>
+  <button class="nav-btn" data-section="education">Education</button>
+  <button class="nav-btn" data-section="trekking">Trekking</button>
+  <button class="nav-btn" data-section="faq">FAQ</button>
+  <button class="nav-btn" data-section="contact">Contact</button>
+</nav>
+
+<!-- ===== MOBILE NAV ===== -->
+<div id="nav-mobile" role="navigation" aria-label="Mobile navigation">
+  <span class="nav-mobile-label">SKS</span>
+  <button class="burger" id="burger-btn" aria-label="Open menu" aria-expanded="false">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" id="icon-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" id="icon-close" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+<div id="mobile-overlay" aria-hidden="true">
+  <button class="mob-nav-btn active" data-mob-section="hero">Intro</button>
+  <button class="mob-nav-btn" data-mob-section="about">About</button>
+  <button class="mob-nav-btn" data-mob-section="projects">Projects</button>
+  <button class="mob-nav-btn" data-mob-section="skills">Skills</button>
+  <button class="mob-nav-btn" data-mob-section="experience">Experience</button>
+  <button class="mob-nav-btn" data-mob-section="education">Education</button>
+  <button class="mob-nav-btn" data-mob-section="trekking">Trekking</button>
+  <button class="mob-nav-btn" data-mob-section="faq">FAQ</button>
+  <button class="mob-nav-btn" data-mob-section="contact">Contact</button>
+</div>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div style="position:relative;z-index:1;width:100%;max-width:64rem;margin:0 auto">
+    <p class="hero-eyebrow reveal">B.Tech AI at Kathmandu University · MLOps &amp; AI/ML Engineer</p>
+    <h1 class="hero-name reveal reveal-d1">Safal Kumar <em>Shrestha</em></h1>
+    <p class="hero-tagline reveal reveal-d2">
+      AI Developer and Systems Engineer designing real-world technology footprints in Nepal.
+      Specialized in custom production apps under <strong style="color:var(--fg);font-weight:500">bala.ai</strong>, heavy cloud infrastructure virtualization,
+      Kubernetes clusters, and automated smart edge intelligence systems.
+    </p>
+    <div class="hero-stats reveal reveal-d3">
+      <div class="hero-stat">KU Krishi App — ICT Award Semi-Finalist</div>
+      <div class="hero-stat">Hydroponics AI System — STEAM Grant Funded</div>
+      <div class="hero-stat">Bare-Metal Infrastructure — Self-Hosted Public Server</div>
+      <div class="hero-stat">AIHPC Group — Kubernetes &amp; HAProxy Cluster</div>
+    </div>
+    <div class="hero-tags reveal reveal-d4">
+      <span class="tag">MLOps / Kubernetes</span>
+      <span class="tag">Flutter SDK</span>
+      <span class="tag">HAProxy / Infrastructure</span>
+      <span class="tag">Edge Computer Vision</span>
+      <span class="tag">Nepal Systems Engineer</span>
+    </div>
+    <div class="reveal reveal-d5" style="display:flex;justify-content:center">
+      <a href="#projects" class="hero-cta">
+        View Selected Case Studies
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true"><div class="scroll-dot"></div></div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="W">
+    <div class="sec-heading reveal">
+      <span class="sec-num">01 / 09</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="reveal reveal-d1">
+          <h3>Bridging the gap between raw machine learning models and <em>hard bare-metal infrastructure orchestration.</em></h3>
+        </div>
+        <div class="reveal reveal-d2">
+          <p>I'm <strong>Safal Kumar Shrestha</strong>, an Artificial Intelligence developer and Systems Engineer pursuing a B.Tech in AI at <strong>Kathmandu University</strong>. My engineering methodology looks past simple software development; I design, build, and maintain the underlying infrastructure required to run high-performance algorithms in production.</p>
+          <p>Whether deploying decentralized mobile platforms on Google Play via <strong>bala.ai</strong>, managing custom container orchestration routines, or configuring high-availability network routers, I build for scale. My foundational systems journey includes building a completely independent, <strong>self-hosted bare-metal server network</strong> from scratch to power live application backends, alongside complex core architecture research inside Kathmandu University's Department of AI.</p>
+          <p>I'm an active member of the <strong>KU Artificial Intelligence Club (KUAIC)</strong>, where I collaborate with peers on AI research, workshops, and community projects that bridge the gap between academic AI and real-world deployment in Nepal.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-d3">
+        <div class="photo-placeholder">
+          <span class="photo-initials">SK</span>
+        </div>
+        <p class="photo-caption">Chitwan, Nepal — 2026 Portfolio</p>
+        <div>
+          <div class="fact"><p class="fact-key">Institution</p><p class="fact-val">Kathmandu University (KU)</p></div>
+          <div class="fact"><p class="fact-key">Systems Core</p><p class="fact-val">Kubernetes, HAProxy, Linux Clustering</p></div>
+          <div class="fact"><p class="fact-key">Google Developer Name</p><p class="fact-val">bala.ai · 3 Live Deployments</p></div>
+          <div class="fact"><p class="fact-key">Cloud Setup</p><p class="fact-val">Self-Built, Publicly Hosted Node</p></div>
+          <div class="fact"><p class="fact-key">National Honor</p><p class="fact-val">KU Krishi — Selected for ICT Award</p></div>
+          <div class="fact"><p class="fact-key">Research Funding</p><p class="fact-val">Hydroponics AI — STEAM Grant Recipient</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="W">
+    <div class="sec-heading reveal">
+      <span class="sec-num">02 / 09</span>
+      <h2>Selected Technical Deployments</h2>
+    </div>
+    <div class="proj-list">
+
+      <!-- Project 01 -->
+      <article class="proj-item reveal">
+        <div class="proj-meta">
+          <span class="proj-num">Project 01</span>
+          <a href="https://play.google.com/store/apps/details?id=com.lateblight.late_blight" target="_blank" rel="noopener noreferrer" class="proj-ext-link">
+            View on Play Store <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <h3 class="proj-title">KU Krishi App</h3>
+        <div class="proj-badges">
+          <span class="badge badge-accent">National ICT Award</span>
+          <span class="badge">Google Play Store Production</span>
+        </div>
+        <p class="proj-desc">An embedded AI agricultural assistant built at Kathmandu University to resolve crop threats on localized farms. It uses edge computer vision algorithms to instantly isolate agricultural diseases like <strong>late blight</strong> through smartphone optics, outputting adaptive metrics natively in the Nepali language. <strong>Selected as a semi-finalist for Nepal's national ICT Award.</strong></p>
+        <div class="proj-stack">
+          <p class="proj-stack-label">Stack</p>
+          <p class="proj-stack-val">Flutter SDK · Python Engine · TensorFlow Mobile · YOLOv8 Weights · FastAPI Server · Firebase Cloud · OpenCV Pipeline</p>
+        </div>
+      </article>
+
+      <!-- Project 02 -->
+      <article class="proj-item reveal">
+        <div class="proj-meta">
+          <span class="proj-num">Project 02</span>
+        </div>
+        <h3 class="proj-title">Hydroponics AI System</h3>
+        <div class="proj-badges">
+          <span class="badge badge-accent">STEAM Research Grant</span>
+          <span class="badge" style="border-color:rgba(218,41,28,0.3);color:#da291c">DFRobot Hardware Sponsored</span>
+        </div>
+        <p class="proj-desc">An industrial IoT automation platform applying Reinforcement Learning (RL) frameworks to soil-free smart urban farming. <strong>Funded by the Ministry of Education, Science and Technology under the STEAM Grant</strong> with hardware telemetry equipment sponsored directly by global robotics manufacturer <strong>DFRobot</strong>.</p>
+        <div class="proj-stack">
+          <p class="proj-stack-label">Stack</p>
+          <p class="proj-stack-val">Embedded C/C++ · TensorFlow Core · PyTorch RL · OpenCV Matrix · ESP32 SoC · Raspberry Pi · Arduino Drivers · MQTT Protocol · WebSockets · FastAPI Backend · Flutter Dashboard · Gymnasium · LiveKit Video Stream</p>
+        </div>
+        <p class="proj-extras-label">What I Engineered</p>
+        <ul class="proj-extras">
+          <li>Programmed the embedded control layer on ESP32 and Raspberry Pi to interface with pH, EC, temperature, and humidity sensors — using DFRobot's gifted hardware components</li>
+          <li>Implemented sensor data acquisition and actuator control to manage pumps and nutrient dosing mechanisms via MQTT</li>
+          <li>Developed the backend infrastructure for the computer vision pipeline</li>
+          <li>Developed a FastAPI backend with MQTT and WebSocket support for real-time device monitoring and automation</li>
+          <li>Integrated LiveKit for real-time video streaming to enable live monitoring of plant growth</li>
+          <li>Built a Flutter mobile application for monitoring sensor data, live streams, and remote control</li>
+          <li>Deployed the system on a local edge server to support real-time processing and device communication</li>
+        </ul>
+        <p class="proj-note">I took the initiative to reach out directly to DFRobot via email, presenting our research vision for the Hydroponics AI system. After reviewing our project proposal and STEAM grant selection, DFRobot officially came on board as a hardware sponsor — gifting us essential electronic components including pH probes, CO2, DHT22, Spectrometer Sensor, ESP32-S3 AI Camera, ESP32-P4 and WaterProof Ultrasonic sensor.</p>
+      </article>
+
+      <!-- Project 03 -->
+      <article class="proj-item reveal">
+        <div class="proj-meta"><span class="proj-num">Project 03</span></div>
+        <h3 class="proj-title">Self-Hosted Public Cloud Infrastructure</h3>
+        <div class="proj-badges">
+          <span class="badge" style="border-color:rgba(0,255,100,0.2);color:#00e05a">Bare-Metal Hardware Stack</span>
+          <span class="badge badge-accent">Semester Project — Tiffin Backend</span>
+        </div>
+        <p class="proj-desc">In 2022, I architected, built, and provisioned an independent <strong>bare-metal server node</strong> from scratch and configured it to be publicly accessible from the open internet. This custom hardware rig hosted the production data endpoints, security rules, and real-time transaction pipelines for the <strong>Like Tiffin</strong> mobile application ecosystem — proving that a student-built infrastructure could reliably serve real users without relying on AWS, GCP, or Azure.</p>
+        <div class="proj-stack">
+          <p class="proj-stack-label">Stack</p>
+          <p class="proj-stack-val">Bare-Metal Linux Architecture · Public IP Networking · Reverse Proxy Routing · Secure SSH Layer · Node.js Daemon Processing · Hardware System Maintenance</p>
+        </div>
+        <p class="proj-extras-label">Infrastructure Engineering Steps</p>
+        <ul class="proj-extras">
+          <li>Assembled the standalone server hardware, managing cooling limits and computing power requirements</li>
+          <li>Configured core Linux network settings, static IP routers, and network firewalls to allow incoming traffic safely</li>
+          <li>Set up reverse proxy configurations to manage domain handling and enforce SSL encryption layers</li>
+          <li>Maintained perfect database and API uptime on raw physical hardware to reliably serve mobile clients</li>
+        </ul>
+      </article>
+
+      <!-- Project 04 -->
+      <article class="proj-item reveal">
+        <div class="proj-meta"><span class="proj-num">Project 04</span></div>
+        <h3 class="proj-title">AIHPC — High-Performance Computing Cluster</h3>
+        <div class="proj-badges">
+          <span class="badge" style="border-color:rgba(50,108,229,0.25);color:#326ce5">KU Department of AI</span>
+        </div>
+        <p class="proj-desc">In 2025, I led an intensive system orchestration initiative within Kathmandu University's Department of AI to build a dedicated high-performance computing cluster (AIHPC). The project involved configuring <strong>Kubernetes</strong> containers for scaling distributed worker loads and establishing <strong>HAProxy</strong> layers to direct load balancing across system networks.</p>
+        <div class="proj-stack">
+          <p class="proj-stack-label">Stack</p>
+          <p class="proj-stack-val">Kubernetes (K8s) · HAProxy Load Balancing · NVIDIA RTX 3080Ti · Docker Containers · Linux Administration · GPU Cluster Topology</p>
+        </div>
+        <p class="proj-extras-label">Engineering Post-Mortem: Why It Failed</p>
+        <ul class="proj-extras">
+          <li>The hardware environment was limited because consumer-grade NVIDIA GeForce RTX 3080Ti GPUs lack hardware-level architecture partitioning (Multi-Instance GPU / MIG)</li>
+          <li>This constraint prevented stable multi-tenant GPU virtualization across the cluster</li>
+          <li>Localized technical team knowledge scaling boundaries further compounded the hardware limitations</li>
+          <li>The project provided deep insight into the practical boundaries between enterprise grid computing systems and consumer accelerator units</li>
+        </ul>
+      </article>
+
+      <!-- Project 05 -->
+      <article class="proj-item reveal">
+        <div class="proj-meta">
+          <span class="proj-num">Project 05</span>
+          <a href="https://play.google.com/store/apps/details?id=com.bala.ai.trek_sathi" target="_blank" rel="noopener noreferrer" class="proj-ext-link">
+            View on Play Store <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <h3 class="proj-title">TrekSathi</h3>
+        <div class="proj-badges">
+          <span class="badge">Google Play Store Production</span>
+        </div>
+        <p class="proj-desc">A high-reliability production trekking companion app engineered to optimize safety workflows for tourists tracking remote mountain corridors across Nepal. Features custom vector trail tracking layers, elevation mapping charts, automated atmospheric data caching, and offline GIS coordinates lookup profiles. Published on Google Play under bala.ai.</p>
+        <div class="proj-stack">
+          <p class="proj-stack-label">Stack</p>
+          <p class="proj-stack-val">Flutter Frontend · Dart · Google Maps SDK · Django REST API · MongoDB Server · OpenWeather API Integration · Firebase Cloud</p>
+        </div>
+        <p class="proj-extras-label">What I Engineered</p>
+        <ul class="proj-extras">
+          <li>Built the complete Flutter app from scratch — UI design, state management, navigation, and all screens</li>
+          <li>Integrated Google Maps SDK with custom trail overlays, waypoint markers, and elevation profile charts</li>
+          <li>Collected and structured raw trekking trail data into a reliable geospatial dataset</li>
+          <li>Connected OpenWeatherMap API for hyper-local mountain weather forecasts with severe weather alerts</li>
+          <li>Developed a Django + MongoDB backend with REST APIs for trail data, trip history, and trekker profiles</li>
+          <li>Implemented offline map caching for use without internet in remote mountain areas</li>
+          <li>Added agentic AI features for autonomous trek planning suggestions and personalized route recommendations</li>
+          <li>Managed the full Play Store release pipeline under the bala.ai account</li>
+        </ul>
+      </article>
+
+      <!-- Project 06 -->
+      <article class="proj-item reveal">
+        <div class="proj-meta"><span class="proj-num">Project 06</span></div>
+        <h3 class="proj-title">Like Tiffin App</h3>
+        <div class="proj-badges">
+          <span class="badge">Google Play Store Production</span>
+        </div>
+        <p class="proj-desc">A home-cooked meal delivery platform connecting <strong>students and office workers</strong> with local home chefs, hotels, and restaurants in Nepal. Like Tiffin promotes healthy eating, reduces food waste, and gives home cooks an income stream — all through a clean, fast Flutter app published under bala.ai. <strong>Powered by my self-hosted bare-metal server infrastructure.</strong></p>
+        <div class="proj-stack">
+          <p class="proj-stack-label">Stack</p>
+          <p class="proj-stack-val">Flutter Native · Dart UI Engine · Firebase Storage · Firestore Sync Streams · Node.js Engine · Google Maps SDK</p>
+        </div>
+        <p class="proj-extras-label">What I Engineered</p>
+        <ul class="proj-extras">
+          <li>Designed and developed the full Flutter cross-platform app for customers and home chefs</li>
+          <li>Engineered instant real-time order stream tracking using Firebase Firestore listeners</li>
+          <li>Implemented Google Maps-based delivery radius matching customers to nearby chefs</li>
+          <li>Created a centralized Node.js admin backend with APIs for user management, order history, and analytics</li>
+          <li>Handled full Play Store publishing under bala.ai</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="W">
+    <div class="sec-heading reveal">
+      <span class="sec-num">03 / 09</span>
+      <h2>Core Tooling &amp; Technologies</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <h3>MLOps &amp; Core Systems</h3>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Kubernetes (K8s)</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>HAProxy Load Balancing</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Bare-Metal Server Architecture</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Linux Systems Administration</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Reverse Proxies &amp; Network Gateways</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>GPU Cluster Resource Profiling</span></div>
+      </div>
+      <div class="skill-cat reveal reveal-d1">
+        <h3>AI / Machine Learning</h3>
+        <div class="skill-item"><span class="skill-dot">·</span><span>TensorFlow</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>PyTorch Architecture</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>YOLOv8 Object Detection</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>OpenCV Processing</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Scikit-learn</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Computer Vision Models</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Natural Language Processing</span></div>
+      </div>
+      <div class="skill-cat reveal reveal-d2">
+        <h3>Mobile Systems</h3>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Flutter SDK Engine</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Dart</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Native Android Systems (Java)</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Firebase Cloud / Firestore</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Google Play Console Publishing</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>REST API Integration</span></div>
+      </div>
+      <div class="skill-cat reveal reveal-d3">
+        <h3>Backend Engineering</h3>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Python</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>FastAPI Framework</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Django REST</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Node.js Engine</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>MongoDB</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>MySQL Infrastructure</span></div>
+      </div>
+      <div class="skill-cat reveal reveal-d4">
+        <h3>IoT &amp; Hardware</h3>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Raspberry Pi Systems</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Arduino Frameworks</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>ESP32 Microcontrollers</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>MQTT Protocols</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Sensor Integration</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>DFRobot Hardware SDK</span></div>
+      </div>
+      <div class="skill-cat reveal reveal-d5">
+        <h3>Engineering Tools</h3>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Git &amp; GitHub</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Docker Containers</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>CI / CD Pipelines</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Linux Bash</span></div>
+        <div class="skill-item"><span class="skill-dot">·</span><span>Agile / Scrum</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+  <div class="W">
+    <div class="sec-heading reveal">
+      <span class="sec-num">04 / 09</span>
+      <h2>Work History &amp; Research Post-Mortems</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <span class="tl-year">2026</span>
+        <h3 class="tl-role">STEAM Research Grant</h3>
+        <p class="tl-org"><strong>STEAM Funding Council</strong> — Ministry of Education, Science and Technology, Government of Nepal</p>
+        <p class="tl-desc">Awarded competitive scientific research capital for validating Hydroponics AI systems via Reinforcement Learning algorithms.</p>
+        <div class="tl-badge"><span class="badge badge-accent">STEAM Research Grant — Officially Funded</span></div>
+      </div>
+
+      <div class="tl-item reveal reveal-d1">
+        <div class="tl-dot"></div>
+        <span class="tl-year">2026</span>
+        <h3 class="tl-role">DFRobot Hardware Sponsorship</h3>
+        <p class="tl-org"><strong>DFRobot</strong> — Global Robotics &amp; Open-Source Hardware Provider</p>
+        <p class="tl-desc">Initiated direct outreach via email to DFRobot, presenting the Hydroponics AI research vision. Successfully secured hardware sponsorship — DFRobot gifted precision industrial instrumentation modules (pH, CO2, ESP32-S3 Cam) to support the sensor infrastructure for the smart farming system.</p>
+        <div class="tl-badge"><span class="badge" style="border-color:rgba(218,41,28,0.3);color:#da291c">DFRobot — Hardware Gifted</span></div>
+      </div>
+
+      <div class="tl-item reveal reveal-d2">
+        <div class="tl-dot"></div>
+        <span class="tl-year">2025</span>
+        <h3 class="tl-role">High-Performance Computing Core Engineer (AIHPC Initiative)</h3>
+        <p class="tl-org"><strong>Department of Artificial Intelligence</strong> — Kathmandu University</p>
+        <p class="tl-desc">Led an intensive system orchestration initiative to build a dedicated high-performance computing cluster (AIHPC) within the university's AI department. Configured Kubernetes containers for scaling distributed worker loads and established HAProxy layers to direct load balancing across system networks.</p>
+        <div class="tl-stack">
+          <p class="tl-stack-label">Stack</p>
+          <p class="tl-stack-val">Kubernetes Cluster Pods · HAProxy Reverse Routing · NVIDIA Driver Topology · Hardware Constraint Diagnostics</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-d3">
+        <div class="tl-dot"></div>
+        <span class="tl-year">2024</span>
+        <h3 class="tl-role">ICT Award — Semi-Finalist</h3>
+        <p class="tl-org"><strong>National ICT Awards</strong> — Nepal</p>
+        <p class="tl-desc">KU Krishi was selected as a semi-finalist for Nepal's national ICT Award for its innovative use of computer vision and AI to empower smallholder farmers.</p>
+        <div class="tl-badge"><span class="badge badge-accent">ICT Award — Semi-Finalist</span></div>
+      </div>
+
+      <div class="tl-item reveal reveal-d4">
+        <div class="tl-dot"></div>
+        <span class="tl-year">2022</span>
+        <h3 class="tl-role">Software Engineer, Android (Full-Time Remote)</h3>
+        <p class="tl-org"><strong>Shop2App Corp</strong> — United States (Remote)</p>
+        <p class="tl-desc">Engineered, deployed, and managed enterprise-tier native mobile commerce layouts connecting native Android systems with the global Shopify core data ecosystem. Worked across the full development lifecycle from feature design to Play Store release, enabling merchants to run their Shopify stores as branded Android apps.</p>
+        <div class="tl-stack">
+          <p class="tl-stack-label">Stack</p>
+          <p class="tl-stack-val">Java · Android SDK · Shopify API · REST Webhooks · Google Play Console</p>
+        </div>
+        <p class="tl-dur">Feb 2022 – Jul 2022 · 6 months · United States (Remote)</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education">
+  <div class="W">
+    <div class="sec-heading reveal">
+      <span class="sec-num">05 / 09</span>
+      <h2>Formal Engineering Foundations</h2>
+    </div>
+
+    <div class="edu-card reveal">
+      <h3 class="edu-inst">Kathmandu University (KU)</h3>
+      <p class="edu-degree">B.Tech in Artificial Intelligence</p>
+      <p class="edu-dept">Department of Artificial Intelligence | School of Engineering · Dhulikhel, Kavrepalanchok, Nepal</p>
+      <div class="edu-badges">
+        <span class="badge badge-accent">Active Enrollment</span>
+        <span class="badge">Enrolled: 2022, Expected: 2027</span>
+      </div>
+      <p class="edu-desc">Acquiring deep structural expertise at Nepal's premier academic research institution. Core syllabus focus balances advanced matrix mathematics, applied data structures, computer system architectures, deep neural optimization, and digital system frameworks designed to address modern software challenges.</p>
+      <p class="edu-mods-label">Key Modules</p>
+      <div class="edu-mods">
+        <span class="edu-mod">Machine Learning</span><span class="edu-mod">Deep Learning</span><span class="edu-mod">Computer Vision</span>
+        <span class="edu-mod">Natural Language Processing</span><span class="edu-mod">Data Structures &amp; Algorithms</span>
+        <span class="edu-mod">Probability &amp; Statistics</span><span class="edu-mod">Linear Algebra</span>
+        <span class="edu-mod">Database Systems</span><span class="edu-mod">Software Engineering</span><span class="edu-mod">Research Methodology</span>
+      </div>
+      <p class="edu-awards-label">Awards</p>
+      <div class="edu-award"><span style="color:var(--primary)">·</span> KU Krishi (ICT Award)</div>
+      <div class="edu-award"><span style="color:var(--primary)">·</span> Hydroponics AI (STEAM Grant)</div>
+    </div>
+
+    <div class="edu-card reveal reveal-d1">
+      <h3 class="edu-inst">Nepal Polytechnic Institute (NPI)</h3>
+      <p class="edu-degree">Diploma in Computer Engineering</p>
+      <p class="edu-dept">Bharatpur, Nepal</p>
+      <div class="edu-badges">
+        <span class="badge">Graduated</span>
+        <span class="badge">2018 – 2022</span>
+      </div>
+      <p class="edu-desc">Studied at one of Nepal's well-regarded technical institutes, with a curriculum covering programming, electronics, networking, data mining, and database management.</p>
+      <p class="edu-mods-label">Key Modules</p>
+      <div class="edu-mods">
+        <span class="edu-mod">Mobile Development</span><span class="edu-mod">Web Development</span>
+        <span class="edu-mod">C/C++</span><span class="edu-mod">Git/GitHub</span>
+        <span class="edu-mod">Networking</span><span class="edu-mod">Database Management</span>
+      </div>
+    </div>
+
+    <div class="edu-extras reveal reveal-d2">
+      <div class="edu-extra">
+        <p class="edu-extra-lbl">Community</p>
+        <p class="edu-extra-val">KU Artificial Intelligence Club (KUAIC) — 2022–Present · Active Member</p>
+      </div>
+      <div class="edu-extra">
+        <p class="edu-extra-lbl">Hackathon</p>
+        <p class="edu-extra-val">AI Crusade — KUAIC 2024 · 3rd Place</p>
+      </div>
+      <div class="edu-extra">
+        <p class="edu-extra-lbl">Award</p>
+        <p class="edu-extra-val">Nepal ICT Award — National ICT Awards · KU Krishi · 2024 · Semi-Finalist</p>
+      </div>
+      <div class="edu-extra">
+        <p class="edu-extra-lbl">Grant</p>
+        <p class="edu-extra-val">STEAM Research Grant — STEAM Programme · Hydroponics AI · 2026 · Funded</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TREKKING ===== -->
+<section id="trekking">
+  <div class="W">
+    <div class="sec-heading reveal">
+      <span class="sec-num">06 / 09</span>
+      <h2>On the trail</h2>
+    </div>
+    <p class="trek-intro reveal reveal-d1">
+      When I'm not writing code, I'm out in the mountains. <strong>Trekking is where I disconnect and reset</strong> — no IDE, no stack traces, just altitude, trail and silence. Nepal's trails are part of who I am, and they're part of why I built TrekSathi.
+    </p>
+
+    <div class="trek-item reveal reveal-d2">
+      <div class="trek-head">
+        <svg class="mountain-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        <h3 class="trek-name">Annapurna Base Camp</h3>
+      </div>
+      <div class="trek-meta">
+        <span class="mono">North ABC Trek</span>
+        <span class="trek-meta-sep">·</span>
+        <span>4,250 m peak elevation</span>
+        <span class="trek-meta-sep">·</span>
+        <span>Gandaki Province</span>
+      </div>
+      <p class="trek-desc">My first trek along the recently popular North ABC route (2025/26), following the winding path of the Modi Khola river up to <strong>Annapurna Base Camp (ABC)</strong> at 4,130 m.</p>
+    </div>
+
+    <div class="trek-item reveal reveal-d3">
+      <div class="trek-head">
+        <svg class="mountain-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        <h3 class="trek-name">Mardi Himal Viewpoint Trek</h3>
+      </div>
+      <div class="trek-meta">
+        <span class="mono">Viewpoint Trek</span>
+        <span class="trek-meta-sep">·</span>
+        <span>Approx. 4,500 m highest point</span>
+        <span class="trek-meta-sep">·</span>
+        <span>Kaski District, Gandaki Province</span>
+      </div>
+      <p class="trek-desc">A shorter Mardi Himal trek to the viewpoint, offering a ridge walk above the treeline. We enjoyed every moment of the journey with friends and fellow trekkers along the trail.</p>
+      <p class="trek-hl-label">Highlights</p>
+      <ul class="trek-hl">
+        <li>Walked the exposed high ridge between Low Camp, High Camp, and the viewpoint</li>
+        <li>Enjoyed the camaraderie with friends and fellow trekkers</li>
+        <li>Experienced long stretches of trail in relative solitude</li>
+        <li>Descended via the Forest Camp route through dense bamboo and rhododendron jungle</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="W-sm">
+    <div class="sec-heading reveal">
+      <span class="sec-num">07 / 09</span>
+      <h2>Frequently Asked</h2>
+    </div>
+    <div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q open" onclick="toggleFaq(this)">
+          <span>Who is Safal Kumar Shrestha?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a open">Safal Kumar Shrestha is an AI Developer, MLOps Engineer, and Android Software Engineer from Chitwan, Nepal. He is currently pursuing a B.Tech in Artificial Intelligence at Kathmandu University and publishes apps under the name <strong>bala.ai</strong> on Google Play. His work has been recognized with the Nepal ICT Award (Semi-Finalist) and a STEAM research grant.</div>
+      </div>
+
+      <div class="faq-item reveal reveal-d1">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What are Safal's most notable projects?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Key projects include <strong>KU Krishi</strong> (ICT Award Semi-Finalist, computer vision for crop disease detection), <strong>Hydroponics AI</strong> (STEAM Grant &amp; DFRobot sponsored, AI + IoT automated farming), a <strong>self-hosted bare-metal server</strong> powering the Like Tiffin app, an <strong>AIHPC Kubernetes cluster</strong>, and the <strong>TrekSathi</strong> trekking companion.</div>
+      </div>
+
+      <div class="faq-item reveal reveal-d2">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What technologies does Safal specialize in?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Safal works across the full stack: <strong>MLOps</strong> (Kubernetes, HAProxy, Docker), <strong>AI/ML</strong> (TensorFlow, PyTorch, YOLOv8, OpenCV), <strong>mobile</strong> (Flutter, Android/Java), <strong>backend</strong> (FastAPI, Django, Node.js, MongoDB), and <strong>IoT hardware</strong> (ESP32, Raspberry Pi, Arduino, DFRobot sensors).</div>
+      </div>
+
+      <div class="faq-item reveal reveal-d3">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How can I collaborate with Safal?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">You can email him at <a href="mailto:dev.safalstha@gmail.com" style="color:var(--primary)">dev.safalstha@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/itsmesafal" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">LinkedIn</a>. He is open to research collaborations, AI/ML internships, app development partnerships, and remote roles.</div>
+      </div>
+
+      <div class="faq-item reveal reveal-d4">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Does Safal have experience with cloud infrastructure?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Yes. He built a completely self-hosted bare-metal server that is publicly accessible and powered the Like Tiffin app backend. He also led the AIHPC initiative at KU, configuring Kubernetes and HAProxy on NVIDIA RTX 3080Ti GPUs, gaining deep insights into enterprise-grade cluster orchestration.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="W-sm">
+    <div class="sec-heading reveal">
+      <span class="sec-num">08 / 09</span>
+      <h2>Let's build something</h2>
+    </div>
+
+    <div class="reveal reveal-d1">
+      <div class="avail-row">
+        <div class="avail-dot"></div>
+        <span style="font-size:0.875rem;color:var(--fg-muted)">Available for opportunities</span>
+      </div>
+      <p class="contact-note">Open to research collaborations, AI/ML internships, app development partnerships, or a genuine conversation about building things for Nepal. Based in Kathmandu — remote-friendly.</p>
+    </div>
+
+    <div class="contact-card reveal reveal-d2">
+      <!-- Email -->
+      <div>
+        <p class="contact-section-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--primary)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </p>
+        <div class="email-row">
+          <a href="mailto:dev.safalstha@gmail.com" class="email-link">dev.safalstha@gmail.com</a>
+          <button class="copy-btn" onclick="copyEmail(this)" title="Copy email address" aria-label="Copy email address">
+            <svg id="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <svg id="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+        </div>
+        <p class="copy-confirm" id="copy-confirm">Copied!</p>
+      </div>
+
+      <hr class="contact-divider"/>
+
+      <!-- Links -->
+      <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--fg-muted);margin-bottom:0.75rem">Links</p>
+      <a href="https://www.linkedin.com/in/safalkumarshrestha" target="_blank" rel="noopener noreferrer" class="clink">
+        <span class="clink-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </span>
+        <span class="clink-desc">LinkedIn</span>
+        <span class="clink-sub">→ in/itsmesafal</span>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://github.com/safalkumarshrestha" target="_blank" rel="noopener noreferrer" class="clink">
+        <span class="clink-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </span>
+        <span class="clink-desc">GitHub</span>
+        <span class="clink-sub">→ Source code</span>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://play.google.com/store/apps/dev?id=4938488984635860791" target="_blank" rel="noopener noreferrer" class="clink">
+        <span class="clink-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.49-7.21-2.79-2.79-10.69 9.8zM.54 1.07C.2 1.42 0 1.96 0 2.67v18.67c0 .71.2 1.25.54 1.6l.08.08 10.46-10.46v-.25L.62.99l-.08.08zM21.15 10.5l-2.99-1.72-3.13 3.13 3.13 3.13 3.01-1.73c.86-.5.86-1.31-.02-1.81zM4.17.24L16.66 7.45 13.87 10.24 3.18.44c.31-.24.68-.3.99-.2z"/></svg>
+        </span>
+        <span class="clink-desc">Google Play — bala.ai</span>
+        <span class="clink-sub">→ 3 published apps</span>
+        <span class="clink-arr">↗</span>
+      </a>
+
+      <!-- Location & Time -->
+      <div class="loc-time-row">
+        <div class="loc-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color:var(--primary)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Chitwan, Nepal
+        </div>
+        <div class="time-row">
+          <div class="time-dot"></div>
+          <span style="font-family:var(--font-mono);font-size:0.75rem" id="local-time">— : — NPT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--fg-muted)">09 / 09</span>
+      <span>·</span>
+      <span>Safal Kumar Shrestha</span>
+    </div>
+    <div>
+      <span>Built with precision in Nepal</span>
+      <span style="margin:0 0.5rem">·</span>
+      <span style="font-family:var(--font-mono)">2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== NAV SCROLL & ACTIVE SECTION =====
+const NAV_SECTIONS = ['hero','about','projects','skills','experience','education','trekking','faq','contact'];
+const nav = document.getElementById('nav');
+const navMobile = document.getElementById('nav-mobile');
+const navBtns = document.querySelectorAll('.nav-btn');
+const mobBtns = document.querySelectorAll('.mob-nav-btn');
+
+function setActive(id) {
+  navBtns.forEach(b => b.classList.toggle('active', b.dataset.section === id));
+  mobBtns.forEach(b => b.classList.toggle('active', b.dataset.mobSection === id));
+}
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 50);
+  navMobile.classList.toggle('scrolled', y > 50);
+
+  let active = NAV_SECTIONS[0];
+  for (const id of NAV_SECTIONS) {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= y + 220) active = id;
+  }
+  setActive(active);
+}, { passive: true });
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+navBtns.forEach(b => b.addEventListener('click', () => scrollTo(b.dataset.section)));
+
+// ===== MOBILE MENU =====
+const burgerBtn = document.getElementById('burger-btn');
+const overlay = document.getElementById('mobile-overlay');
+const iconMenu = document.getElementById('icon-menu');
+const iconClose = document.getElementById('icon-close');
+let menuOpen = false;
+
+function toggleMenu(force) {
+  menuOpen = force !== undefined ? force : !menuOpen;
+  overlay.classList.toggle('open', menuOpen);
+  iconMenu.style.display = menuOpen ? 'none' : 'inline-block';
+  iconClose.style.display = menuOpen ? 'inline-block' : 'none';
+  burgerBtn.setAttribute('aria-expanded', menuOpen);
+  overlay.setAttribute('aria-hidden', !menuOpen);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+
+burgerBtn.addEventListener('click', () => toggleMenu());
+mobBtns.forEach(b => b.addEventListener('click', () => {
+  scrollTo(b.dataset.mobSection);
+  toggleMenu(false);
+}));
+
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// ===== FAQ ACCORDION =====
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+  // Open clicked if it wasn't open
+  if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+}
+
+// ===== EMAIL COPY =====
+function copyEmail(btn) {
+  navigator.clipboard.writeText('dev.safalstha@gmail.com').then(() => {
+    document.getElementById('copy-icon').style.display = 'none';
+    document.getElementById('check-icon').style.display = 'inline-block';
+    document.getElementById('copy-confirm').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('copy-icon').style.display = 'inline-block';
+      document.getElementById('check-icon').style.display = 'none';
+      document.getElementById('copy-confirm').style.display = 'none';
+    }, 2000);
+  });
+}
+
+// ===== LOCAL TIME (Kathmandu NPT UTC+5:45) =====
+function updateTime() {
+  const now = new Date();
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const npt = new Date(utc + 5.75 * 3600000);
+  const h = String(npt.getHours()).padStart(2, '0');
+  const m = String(npt.getMinutes()).padStart(2, '0');
+  document.getElementById('local-time').textContent = h + ':' + m + ' NPT (UTC+5:45)';
+}
+updateTime();
+setInterval(updateTime, 60000);
+</script>
+</body>
+</html>
