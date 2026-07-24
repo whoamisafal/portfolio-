@@ -7,7 +7,7 @@
 Building AI systems that bridge research, infrastructure, and production.
 
 [Portfolio](https://safalkumarshrestha.github.io/portfolio-/) •
-[LinkedIn]([https://linkedin.com/in/itsmesafal](https://www.linkedin.com/in/safalkumarshrestha/)) •
+[LinkedIn](https://linkedin.com/in/safalkumarshrestha) •
 [GitHub](https://github.com/safalkumarshrestha)
 
 ---
