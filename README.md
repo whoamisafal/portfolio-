@@ -1,252 +1,194 @@
-<div align="center">
+# Safal Kumar Shrestha — Portfolio
 
-# 👋 Hi, I'm Safal Kumar Shrestha
+Personal digital laboratory and portfolio of **Safal Kumar Shrestha** — AI/ML Engineer, MLOps Engineer, and Android Software Engineer from Chitwan, Nepal. Built with pure HTML/CSS/JS and optimized for search engines and AI answer engines.
 
-### AI/ML Engineer • MLOps Engineer • Full Stack Developer
-
-Building AI systems that bridge research, infrastructure, and production.
-
-[Portfolio](https://safalkumarshrestha.github.io/portfolio-/) •
-[LinkedIn](https://linkedin.com/in/safalkumarshrestha) •
-[GitHub](https://github.com/safalkumarshrestha)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
 ---
 
-</div>
+## Features
 
-## 🚀 About Me
-
-I'm a **B.Tech Artificial Intelligence student at Kathmandu University** passionate about developing intelligent systems that solve real-world problems.
-
-My interests include:
-
-- 🤖 Artificial Intelligence & Machine Learning
-- 🧠 Computer Vision
-- ☁️ MLOps & Kubernetes
-- 📱 Flutter Development
-- 🌱 AI + IoT
-- 🖥️ Self-hosted Infrastructure
-- ⚡ High Performance Computing
-
-I enjoy taking projects from **idea → research → deployment → production**.
+- **Fully Responsive** — Optimized for mobile, tablet, and desktop with fluid typography and breakpoints at 1024px, 900px, 768px, 480px, and 360px
+- **Dark/Light Theme** — Toggle between themes with localStorage persistence and system preference detection
+- **Premium UI/UX** — Glassmorphism, gradient borders, animated background orbs, hover effects, scroll reveal animations, loading screen, magnetic buttons, and animated counters
+- **Photography Gallery** — Dynamic masonry gallery with category filtering and lightbox navigation, powered by `static/json/photos.json`
+- **Project Case Studies** — Modal-based project detail view with comprehensive case study data
+- **SEO/AEO Optimized** — Comprehensive JSON-LD structured data including `Person`, `ProfilePage`, `WebSite`, `Organization`, `BreadcrumbList`, `ItemList` (projects as `SoftwareApplication`), and `FAQPage` with 10 Q&A pairs
+- **Accessibility** — Skip links, ARIA labels, semantic HTML, reduced motion support
+- **Performance** — DNS prefetch, preconnect hints, async image decoding, lazy loading
 
 ---
 
-# 🏆 Achievements
+## Tech Stack
 
-- 🥈 Nepal ICT Award Semi-Finalist
-- 🌱 STEAM Research Grant Recipient
-- 🔌 DFRobot Hardware Sponsor
-- 📱 Multiple Apps Published on Google Play
-- ☁️ Built Self-Hosted Production Infrastructure
-- 🖥️ AIHPC Kubernetes Cluster Contributor
-
----
-
-# 💻 Tech Stack
-
-### Artificial Intelligence
-
-- PyTorch
-- TensorFlow
-- Scikit-learn
-- OpenCV
-- YOLO
-- Reinforcement Learning
-- NLP
-
-### Backend
-
-- FastAPI
-- Django
-- Node.js
-- MongoDB
-- MySQL
-- REST APIs
-- MQTT
-
-### Mobile
-
-- Flutter
-- Dart
-- Firebase
-- Google Maps
-- Android
-
-### DevOps & Infrastructure
-
-- Docker
-- Kubernetes
-- HAProxy
-- Linux
-- GitHub Actions
-- Nginx
-- Self-hosted Servers
-
-### IoT
-
-- ESP32
-- Raspberry Pi
-- Arduino
-- Sensors
-- MQTT
-- Edge AI
+| Category | Technologies |
+|----------|-------------|
+| **Frontend** | HTML5, CSS3 (Custom Design System), Vanilla JavaScript |
+| **Fonts** | Plus Jakarta Sans, Cormorant (Serif), DM Mono, Inter |
+| **Icons** | Font Awesome 6, inline SVGs |
+| **Data** | JSON (`static/json/photos.json`) |
+| **Deployment** | Static site — deploy to any web server or CDN |
 
 ---
 
-# 🚀 Featured Projects
+## Project Structure
 
-## 🌾 KU Krishi
-
-AI-powered crop disease detection platform using Computer Vision.
-
-**Highlights**
-
-- Computer Vision
-- Flutter
-- FastAPI
-- TensorFlow
-- YOLO
-- Firebase
-
-🏆 Nepal ICT Award Semi-Finalist
-
----
-
-## 🌱 Hydroponics AI
-
-Intelligent hydroponic farming platform combining AI, IoT, Reinforcement Learning and Edge Computing.
-
-Features
-
-- Reinforcement Learning
-- IoT Automation
-- ESP32
-- Raspberry Pi
-- FastAPI
-- Flutter
-- LiveKit
-- MQTT
-
-🏆 STEAM Research Grant
-
-🔌 Hardware Sponsored by DFRobot
+```
+portfolio/
+├── index.html                 # Main portfolio page
+├── script.js                  # Main JavaScript logic
+├── static/
+│   ├── css/
+│   │   ├── style.css          # Primary stylesheet (design system, responsive, animations)
+│   │   └── index.css          # Alternative stylesheet (editorial layout)
+│   ├── js/
+│   │   └── script.js          # Interactive modules (gallery, modals, theme, counters)
+│   ├── img/
+│   │   └── safal.png          # Profile image
+│   └── json/
+│       └── photos.json        # Photography gallery data
+├── safal_cv.pdf               # Downloadable CV
+├── sitemap.xml                # XML sitemap for search engines
+├── robots.txt                 # Search engine crawler directives
+└── README.md                  # This file
+```
 
 ---
 
-## ☁️ Self Hosted Cloud
+## Getting Started
 
-Designed and deployed a complete bare-metal production server powering real applications without relying on AWS or Azure.
+### Prerequisites
 
-Highlights
+No build process or dependencies required. This is a static site.
 
-- Linux
-- Reverse Proxy
-- Networking
-- Security
-- Production Deployment
+### Running Locally
 
----
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/whoamisafal/portfolio.git
+   cd portfolio
+   ```
 
-## 🖥 AIHPC
+2. Serve with any static HTTP server (optional, for gallery JSON fetching):
+   ```bash
+   # Python
+   python -m http.server 8000
 
-High Performance AI Cluster using Kubernetes.
+   # Node.js
+   npx serve .
 
-Technologies
+   # VS Code Live Server extension
+   ```
+   
+   > **Note:** The photography gallery fetches `static/json/photos.json` via HTTP, so serving via a local server is recommended rather than opening `file://` directly.
 
-- Kubernetes
-- Docker
-- HAProxy
-- GPU Computing
-- Linux
-
----
-
-## 🥾 TrekSathi
-
-A trekking companion application built for Nepal.
-
-Features
-
-- Offline Maps
-- Weather
-- Navigation
-- Flutter
-- Django
-- MongoDB
+3. Open `http://localhost:8000` in your browser.
 
 ---
 
-## 🍱 Like Tiffin
+## Customization
 
-Food delivery platform connecting home chefs and customers.
+### Personal Information
 
-Features
+Update the following in `index.html`:
+- **Name, title, bio** — Hero section (~line 437)
+- **Contact details** — Contact section (~line 1564) and footer (~line 1658)
+- **Social links** — Footer Connect section and JSON-LD `sameAs` arrays
+- **Projects** — Project cards (~line 730-940) and `static/js/script.js` `projectsData` object
+- **Skills** — Skills section (~line 977-1049)
+- **Experience** — Experience timeline (~line 1066-1190)
+- **Education** — Education cards (~line 1214-1270)
+- **FAQ** — FAQ section (~line 1474-1650) and JSON-LD `FAQPage` schema
 
-- Flutter
-- Firebase
-- Node.js
-- Google Maps
+### Photography Gallery
 
----
+Edit `static/json/photos.json`:
+```json
+{
+  "gallery": [
+    {
+      "url": "static/img/photo1.jpg",
+      "title": "Photo Title",
+      "category": "landscape"
+    }
+  ]
+}
+```
 
-# 📊 GitHub Stats
+Supported categories: `landscape`, `trekking`, `portrait`, `tech`, `nature`, `urban`
 
-<p align="center">
+### CV
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=safalkumarshrestha&show_icons=true&theme=tokyonight"/>
+Replace `safal_cv.pdf` with your own CV file. Update download links in `index.html` if needed.
 
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=safalkumarshrestha&layout=compact&theme=tokyonight"/>
+### Theme Colors
 
-</p>
-
----
-
-# 📈 Current Focus
-
-- Large Language Models
-- Agentic AI Systems
-- Reinforcement Learning
-- Distributed Training
-- MLOps
-- Kubernetes
-- AI Infrastructure
-- Multi-Model AI
-- Mixture of Experts
-- Edge AI
-
----
-
-# 🤝 Let's Collaborate
-
-I'm interested in collaborating on:
-
-- Artificial Intelligence
-- Open Source
-- Computer Vision
-- MLOps
-- Flutter
-- Backend Systems
-- AI Infrastructure
-- Research Projects
+Modify CSS custom properties in `static/css/style.css`:
+```css
+:root {
+  --bg-primary: #08090c;
+  --accent-cyan: #06b6d4;
+  --accent-blue: #38bdf8;
+  /* ... */
+}
+```
 
 ---
 
-# 📫 Contact
+## SEO/AEO Features
 
-📧 Email: dev.safalstha@gmail.com
+- **JSON-LD Structured Data:**
+  - `Person` — Name, job titles, education, awards, contact info
+  - `ProfilePage` — Entity profile signals
+  - `WebSite` with `SearchAction` — Sitelinks search box
+  - `Organization` (bala.ai) — Brand entity
+  - `BreadcrumbList` — Navigation hierarchy
+  - `ItemList` with `SoftwareApplication` — Project listings
+  - `FAQPage` — 10 questions for featured snippets and AI answer engines
 
-🌐 Portfolio: https://safalkumarshrestha.github.io/portfolio-/
+- **Meta Tags:**
+  - Open Graph (Facebook/LinkedIn)
+  - Twitter Cards
+  - Canonical URL
+  - Geo location tags
+  - Color scheme
+  - Theme color
 
-💼 LinkedIn: https://www.linkedin.com/in/safalkumarshrestha/
-
+- **Technical SEO:**
+  - XML sitemap (`sitemap.xml`)
+  - `robots.txt` with sitemap reference
+  - Semantic HTML5 elements
+  - Accessible navigation and skip links
+  - Lazy loading images with `decoding="async"`
 
 ---
 
-<div align="center">
+## Deployment
 
-### "Building AI that works beyond notebooks."
+Deploy to any static hosting service:
 
-⭐ If you like my projects, consider giving them a star!
+- **Netlify / Vercel** — Connect repository, auto-deploy on push
+- **GitHub Pages** — Enable Pages in repository settings
+- **Cloudflare Pages** — Connect Git repository
+- **Nginx / Apache** — Upload files to web root
 
-</div>
+Ensure `sitemap.xml` and `robots.txt` are served from the root directory.
+
+---
+
+## License
+
+MIT License — feel free to use this template for your own portfolio.
+
+---
+
+## Contact
+
+**Safal Kumar Shrestha**
+- 📧 hello@safalkumarshrestha.com.np
+- 💻 [github.com/whoamisafal](https://github.com/whoamisafal)
+- 🔗 [linkedin.com/in/itsmesafal](https://www.linkedin.com/in/itsmesafal)
+- 🌐 [safalkumarshrestha.com.np](https://www.safalkumarshrestha.com.np)
