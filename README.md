@@ -1,6 +1,6 @@
 # Safal Kumar Shrestha — Portfolio
 
-Personal digital laboratory and portfolio of **Safal Kumar Shrestha** — AI/ML Engineer, MLOps Engineer, and Android Software Engineer from Chitwan, Nepal. Built with pure HTML/CSS/JS and optimized for search engines and AI answer engines.
+Personal digital laboratory and portfolio of **Safal Kumar Shrestha** — AI/ML Engineer, MLOps Engineer, and Android Software Engineer from Chitwan, Nepal. 
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
