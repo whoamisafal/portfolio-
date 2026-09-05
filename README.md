@@ -46,8 +46,8 @@ Currently pursuing a **B.Tech in Artificial Intelligence** at **Kathmandu Univer
 ## Connect
 
 - 📧 **Email:** hello@safalkumarshrestha.com.np
-- 💻 **GitHub:** [github.com/whoamisafal](https://github.com/whoamisafal)
-- 🔗 **LinkedIn:** [linkedin.com/in/itsmesafal](https://www.linkedin.com/in/itsmesafal)
+- 💻 **GitHub:** [github.com/whoamisafal](https://github.com/safalkumarshrestha)
+- 🔗 **LinkedIn:** [linkedin.com/in/itsmesafal](https://www.linkedin.com/in/safalkumarshrestha)
 - 🌐 **Portfolio:** [safalkumarshrestha.com.np](https://www.safalkumarshrestha.com.np)
 - 📱 **Google Play (bala.ai):** [3 Published Apps](https://apkpure.com/tiffin/com.tiffin.tiffin)
 
